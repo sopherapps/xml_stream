@@ -1,0 +1,20 @@
+<company>
+    <staff>
+        <operations_department>
+            <employees>
+                <team>Marketing</team>
+                <location name="head office" address="Kampala, Uganda"/>
+                <bio first_name="John" last_name="Doe">John Doe</bio>
+                <bio first_name="Jane" last_name="Doe">Jane Doe</bio>
+                <bio first_name="Peter" last_name="Doe">Peter Doe</bio>
+            </employees>
+            <employees>
+                <team>Customer Service</team>
+                <location name="Kampala branch" address="Kampala, Uganda"/>
+                <bio first_name="Mary" last_name="Doe">Mary Doe</bio>
+                <bio first_name="Harry" last_name="Doe">Harry Doe</bio>
+                <bio first_name="Paul" last_name="Doe">Paul Doe</bio>
+            </employees>
+        </operations_department>
+    </staff>
+</company>
