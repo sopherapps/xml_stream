@@ -1,9 +1,18 @@
 """Module containing the data types needed for the module to work"""
-from typing import Iterable
+from typing import Iterable, List, Dict
 from xml.etree.ElementTree import Element
 
 from ._utils import get_unique_and_repeated_sub_elements, \
     get_xml_element_attributes_as_dict, add_common_sub_elements
+
+
+def group_elements_by_tag(elements: List[Element]) -> Dict[str, List[Element]]:
+    """Returns a dictionary with elements of the same tag grouped together in lists"""
+    unique_tags = set([sub_element.tag for sub_element in elements])
+    return {
+        tag: XmlListElement(filter((lambda x: x.tag == tag), elements))
+        for tag in unique_tags
+    }
 
 
 class XmlListElement(list):
@@ -45,11 +54,9 @@ class XmlDictElement(dict):
         if len(repeated_root_elements) > 0:
             repeated_root_elements = add_common_sub_elements(
                 elements=repeated_root_elements, common_sub_elements=unique_root_elements_map.values())
-            unique_tags = set([element.tag for element in repeated_root_elements])
 
-            self.update(
-                {tag: XmlListElement(filter(lambda x: x.tag == tag, repeated_root_elements))
-                 for tag in unique_tags})
+            grouped_elements = group_elements_by_tag(elements=repeated_root_elements)
+            self.update(grouped_elements)
         else:
             for item in xml_element:
                 item_attributes_dict = get_xml_element_attributes_as_dict(item)
@@ -61,11 +68,7 @@ class XmlDictElement(dict):
                     if len(repeated_elements) == 0:
                         value = XmlDictElement(item)
                     else:
-                        unique_tags = set([sub_element.tag for sub_element in repeated_elements])
-                        value = {
-                            tag: XmlListElement(filter((lambda x: x.tag == tag), repeated_elements))
-                            for tag in unique_tags
-                        }
+                        value = group_elements_by_tag(elements=repeated_elements)
 
                     value.update(item_attributes_dict)
 
