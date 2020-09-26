@@ -2,6 +2,7 @@
 import os
 from unittest import TestCase, main
 from xml.etree.ElementTree import Element
+from xml.etree import cElementTree as ElementTree
 
 from xml_stream import read_xml_file
 
@@ -14,6 +15,10 @@ class TestReadXmlString(TestCase):
         test_folder_path = os.path.dirname(__file__)
         self.small_mock_file_path = os.path.join(test_folder_path, 'small_mock.xml')
         self.huge_mock_file_path = os.path.join(test_folder_path, 'huge_mock.xml')
+
+        with open(self.small_mock_file_path, 'rb') as small_mock_file:
+            self.expected_small_xml_output = ElementTree.parse(small_mock_file).getroot()
+
         self.expected_small_mock_output = {
             'operations_department': {
                 'employees': [
@@ -133,6 +138,36 @@ class TestReadXmlString(TestCase):
             employees_output.append(element['bio'])
 
         self.assertListEqual(employees_output, self.expected_small_mock_output['operations_department']['employees'])
+
+    def test_read_xml_file_for_staff(self):
+        """Converts the XML file into a Element of staff's sub elements when records_tag=staff"""
+        for element, expected_element in zip(
+                read_xml_file(self.small_mock_file_path, records_tag='staff'),
+                self.expected_small_xml_output.findall('staff')):
+            self.assertIsInstance(element, Element)
+            self.assertEqual(ElementTree.tostring(element), ElementTree.tostring(expected_element))
+
+    def test_read_xml_file_for_operations_department(self):
+        """
+        Converts the XML file into a Element of operations department's
+        sub elements when records_tag=operations_department
+        """
+        for element, expected_element in zip(
+                read_xml_file(self.small_mock_file_path, records_tag='operations_department'),
+                self.expected_small_xml_output.findall('operations_department')):
+            self.assertIsInstance(element, Element)
+            self.assertEqual(ElementTree.tostring(element), ElementTree.tostring(expected_element))
+
+    def test_read_xml_file_for_employees(self):
+        """
+        Converts the XML file into a Element of employees'
+        sub elements when records_tag=employees
+        """
+        for element, expected_element in zip(
+                read_xml_file(self.small_mock_file_path, records_tag='employees'),
+                self.expected_small_xml_output.findall('employees')):
+            self.assertIsInstance(element, Element)
+            self.assertEqual(ElementTree.tostring(element), ElementTree.tostring(expected_element))
 
 
 if __name__ == '__main__':
