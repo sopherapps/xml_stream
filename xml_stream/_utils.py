@@ -1,4 +1,5 @@
 """Module containing protected utility functions for the package"""
+import copy
 from typing import Dict, List
 from xml.etree.ElementTree import Element
 
@@ -29,3 +30,17 @@ def get_xml_element_attributes_as_dict(xml_element: Element):
     """Add the XML element's attributes as a dictionary"""
     element_attributes = xml_element.items()
     return dict(element_attributes) if element_attributes else {}
+
+
+def add_common_sub_elements(
+        elements: List[Element], common_sub_elements: List[Element]) -> List[Element]:
+    """Adds the common sub elements to each element in the list and returns that list"""
+    for repeated_element in elements:
+        # in order not to lose the text
+        if repeated_element.text:
+            repeated_element.set('_value', repeated_element.text)
+
+        for common_sub_element in common_sub_elements:
+            repeated_element.append(copy.deepcopy(common_sub_element))
+
+    return elements

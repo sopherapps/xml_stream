@@ -1,9 +1,9 @@
 """Module containing the data types needed for the module to work"""
-import copy
 from typing import Iterable
 from xml.etree.ElementTree import Element
 
-from ._utils import get_unique_and_repeated_sub_elements, get_xml_element_attributes_as_dict
+from ._utils import get_unique_and_repeated_sub_elements, \
+    get_xml_element_attributes_as_dict, add_common_sub_elements
 
 
 class XmlListElement(list):
@@ -22,14 +22,8 @@ class XmlListElement(list):
                     self.append(XmlDictElement(item))
                 else:
                     # append a list
-                    for repeated_element in repeated_elements:
-                        # in order not to lose the text
-                        if repeated_element.text:
-                            repeated_element.set('_value', repeated_element.text)
-
-                        for _, unique_element in unique_elements_map.items():
-                            repeated_element.append(copy.deepcopy(unique_element))
-
+                    repeated_elements = add_common_sub_elements(
+                        elements=repeated_elements, common_sub_elements=unique_elements_map.values())
                     self.append(XmlListElement(repeated_elements))
 
             elif item.text:
@@ -49,21 +43,13 @@ class XmlDictElement(dict):
         unique_root_elements_map, repeated_root_elements = get_unique_and_repeated_sub_elements(xml_element)
 
         if len(repeated_root_elements) > 0:
-            unique_tags = set()
-
-            for repeated_element in repeated_root_elements:
-                # in order not to lose the text
-                if repeated_element.text:
-                    repeated_element.set('_value', repeated_element.text)
-
-                for _, unique_element in unique_root_elements_map.items():
-                    repeated_element.append(copy.deepcopy(unique_element))
-
-                unique_tags = set([element.tag for element in repeated_root_elements])
+            repeated_root_elements = add_common_sub_elements(
+                elements=repeated_root_elements, common_sub_elements=unique_root_elements_map.values())
+            unique_tags = set([element.tag for element in repeated_root_elements])
 
             self.update(
-                {tag: XmlListElement(filter(lambda x: x.tag == tag, repeated_root_elements)) for tag in
-                 unique_tags})
+                {tag: XmlListElement(filter(lambda x: x.tag == tag, repeated_root_elements))
+                 for tag in unique_tags})
         else:
             for item in xml_element:
                 item_attributes_dict = get_xml_element_attributes_as_dict(item)
