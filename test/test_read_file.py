@@ -130,7 +130,7 @@ class TestReadXmlString(TestCase):
         employees_output = []
 
         for element in read_xml_file(self.small_mock_file_path, records_tag='employees', to_dict=True):
-            employees_output = employees_output + element
+            employees_output.append(element['bio'])
 
         self.assertListEqual(employees_output, self.expected_small_mock_output['operations_department']['employees'])
 

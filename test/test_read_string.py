@@ -135,7 +135,7 @@ class TestReadXmlString(TestCase):
         employees_output = []
 
         for element in read_xml_string(self.xml_string, records_tag='employees', to_dict=True):
-            employees_output = employees_output + element
+            employees_output.append(element['bio'])
 
         self.assertListEqual(employees_output, self.expected_output['operations_department']['employees'])
 
