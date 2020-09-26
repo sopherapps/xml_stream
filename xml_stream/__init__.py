@@ -1,7 +1,7 @@
 """Entry point for simple_email"""
 from typing import Optional, Union, Iterator
 from xml.etree import cElementTree as ElementTree
-from xml.etree.ElementTree import Element
+from xml.etree.cElementTree import Element
 
 __version__ = "0.0.1"
 

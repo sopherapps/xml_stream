@@ -1,5 +1,7 @@
 """Tests for the read_xml_string function"""
 from unittest import TestCase, main
+from xml.etree import cElementTree as ElementTree
+from xml.etree.ElementTree import Element
 
 from xml_stream import read_xml_string
 
@@ -31,6 +33,7 @@ class TestReadXmlString(TestCase):
         </staff>
         </company>
         """
+        self.expected_xml_output: Element = ElementTree.XML(self.xml_string)
         self.expected_output = {
             'operations_department': {
                 'employees': [
@@ -138,6 +141,35 @@ class TestReadXmlString(TestCase):
             employees_output.append(element['bio'])
 
         self.assertListEqual(employees_output, self.expected_output['operations_department']['employees'])
+
+    def test_read_xml_string_for_staff(self):
+        """Converts the XML string into a Element of staff's sub elements when records_tag=staff"""
+        for element, expected_element in zip(
+                read_xml_string(self.xml_string, records_tag='staff'), self.expected_xml_output.findall('staff')):
+            self.assertIsInstance(element, Element)
+            self.assertEqual(ElementTree.tostring(element), ElementTree.tostring(expected_element))
+
+    def test_read_xml_string_for_operations_department(self):
+        """
+        Converts the XML string into a Element of operations department's
+        sub elements when records_tag=operations_department
+        """
+        for element, expected_element in zip(
+                read_xml_string(self.xml_string, records_tag='operations_department'),
+                self.expected_xml_output.findall('operations_department')):
+            self.assertIsInstance(element, Element)
+            self.assertEqual(ElementTree.tostring(element), ElementTree.tostring(expected_element))
+
+    def test_read_xml_string_for_employees(self):
+        """
+        Converts the XML string into a Element of employees'
+        sub elements when records_tag=employees
+        """
+        for element, expected_element in zip(
+                read_xml_string(self.xml_string, records_tag='employees'),
+                self.expected_xml_output.findall('employees')):
+            self.assertIsInstance(element, Element)
+            self.assertEqual(ElementTree.tostring(element), ElementTree.tostring(expected_element))
 
 
 if __name__ == '__main__':
