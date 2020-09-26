@@ -9,7 +9,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="xml_stream",
-    version="0.0.1",
+    version="0.0.2",
     description="""
     A simple XML file and string reader to read big XML files and strings using iterators
     with optional conversion to dict
