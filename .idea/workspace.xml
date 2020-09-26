@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ceb31947-feba-41ba-97f9-42799eee34aa" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/xml_stream/data_types.py" beforeDir="false" afterPath="$PROJECT_DIR$/xml_stream/data_types.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +37,49 @@
       <recent name="$PROJECT_DIR$/test" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests for test_read_string.TestReadXmlString.test_read_xml_string_to_dict_for_operations_department">
+  <component name="RunManager" selected="Python tests.Unittests for test_read_file.TestReadXmlString.test_read_xml_file_to_dict_for_operations_department">
+    <configuration name="Unittests for test_read_file.TestReadXmlString.test_read_huge_xml_file_to_dict" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="xml_stream" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_read_file.TestReadXmlString.test_read_huge_xml_file_to_dict&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test_read_file.TestReadXmlString.test_read_huge_xml_file_to_xml_element" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="xml_stream" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_read_file.TestReadXmlString.test_read_huge_xml_file_to_xml_element&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Unittests for test_read_file.TestReadXmlString.test_read_xml_file_to_dict_for_employees" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <module name="xml_stream" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_read_file.TestReadXmlString.test_read_xml_file_to_dict_for_employees&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="Unittests for test_read_file.TestReadXmlString.test_read_xml_file_to_dict_for_operations_department" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <module name="xml_stream" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -65,40 +108,13 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Unittests for test_read_string.TestReadXmlString.test_read_xml_string_to_dict_for_operations_department" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="xml_stream" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_read_string.TestReadXmlString.test_read_xml_string_to_dict_for_operations_department&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Unittests for test_read_string.TestReadXmlString.test_read_xml_string_to_dict_for_staff" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
-      <module name="xml_stream" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;test_read_string.TestReadXmlString.test_read_xml_string_to_dict_for_staff&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Unittests for test_read_string.TestReadXmlString.test_read_xml_string_to_dict_for_operations_department" />
         <item itemvalue="Python tests.Unittests for test_read_file.TestReadXmlString.test_read_xml_file_to_dict_for_operations_department" />
-        <item itemvalue="Python tests.Unittests for test_read_string.TestReadXmlString.test_read_xml_string_to_dict_for_staff" />
         <item itemvalue="Python tests.Unittests for test_read_file.TestReadXmlString.test_read_xml_file_to_dict_for_staff" />
+        <item itemvalue="Python tests.Unittests for test_read_file.TestReadXmlString.test_read_huge_xml_file_to_xml_element" />
+        <item itemvalue="Python tests.Unittests for test_read_file.TestReadXmlString.test_read_huge_xml_file_to_dict" />
+        <item itemvalue="Python tests.Unittests for test_read_file.TestReadXmlString.test_read_xml_file_to_dict_for_employees" />
       </list>
     </recent_temporary>
   </component>
@@ -128,38 +144,38 @@
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
     <state x="718" y="256" width="530" height="598" key="FileChooserDialogImpl/67.34.1853.1046@67.34.1853.1046" timestamp="1601077909139" />
-    <state width="1825" height="341" key="GridCell.Tab.0.bottom" timestamp="1601087640913">
+    <state width="1825" height="367" key="GridCell.Tab.0.bottom" timestamp="1601127899363">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
-    <state width="1825" height="341" key="GridCell.Tab.0.bottom/67.34.1853.1046@67.34.1853.1046" timestamp="1601087640913" />
-    <state width="1825" height="341" key="GridCell.Tab.0.center" timestamp="1601087640910">
+    <state width="1825" height="367" key="GridCell.Tab.0.bottom/67.34.1853.1046@67.34.1853.1046" timestamp="1601127899363" />
+    <state width="1825" height="367" key="GridCell.Tab.0.center" timestamp="1601127899361">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
-    <state width="1825" height="341" key="GridCell.Tab.0.center/67.34.1853.1046@67.34.1853.1046" timestamp="1601087640910" />
-    <state width="1825" height="341" key="GridCell.Tab.0.left" timestamp="1601087640909">
+    <state width="1825" height="367" key="GridCell.Tab.0.center/67.34.1853.1046@67.34.1853.1046" timestamp="1601127899361" />
+    <state width="1825" height="367" key="GridCell.Tab.0.left" timestamp="1601127899358">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
-    <state width="1825" height="341" key="GridCell.Tab.0.left/67.34.1853.1046@67.34.1853.1046" timestamp="1601087640909" />
-    <state width="1825" height="341" key="GridCell.Tab.0.right" timestamp="1601087640912">
+    <state width="1825" height="367" key="GridCell.Tab.0.left/67.34.1853.1046@67.34.1853.1046" timestamp="1601127899358" />
+    <state width="1825" height="367" key="GridCell.Tab.0.right" timestamp="1601127899362">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
-    <state width="1825" height="341" key="GridCell.Tab.0.right/67.34.1853.1046@67.34.1853.1046" timestamp="1601087640912" />
-    <state width="1825" height="341" key="GridCell.Tab.1.bottom" timestamp="1601087640920">
+    <state width="1825" height="367" key="GridCell.Tab.0.right/67.34.1853.1046@67.34.1853.1046" timestamp="1601127899362" />
+    <state width="1825" height="367" key="GridCell.Tab.1.bottom" timestamp="1601127348148">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
-    <state width="1825" height="341" key="GridCell.Tab.1.bottom/67.34.1853.1046@67.34.1853.1046" timestamp="1601087640920" />
-    <state width="1825" height="341" key="GridCell.Tab.1.center" timestamp="1601087640915">
+    <state width="1825" height="367" key="GridCell.Tab.1.bottom/67.34.1853.1046@67.34.1853.1046" timestamp="1601127348148" />
+    <state width="1825" height="367" key="GridCell.Tab.1.center" timestamp="1601127348148">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
-    <state width="1825" height="341" key="GridCell.Tab.1.center/67.34.1853.1046@67.34.1853.1046" timestamp="1601087640915" />
-    <state width="1825" height="341" key="GridCell.Tab.1.left" timestamp="1601087640914">
+    <state width="1825" height="367" key="GridCell.Tab.1.center/67.34.1853.1046@67.34.1853.1046" timestamp="1601127348148" />
+    <state width="1825" height="367" key="GridCell.Tab.1.left" timestamp="1601127348147">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
-    <state width="1825" height="341" key="GridCell.Tab.1.left/67.34.1853.1046@67.34.1853.1046" timestamp="1601087640914" />
-    <state width="1825" height="341" key="GridCell.Tab.1.right" timestamp="1601087640918">
+    <state width="1825" height="367" key="GridCell.Tab.1.left/67.34.1853.1046@67.34.1853.1046" timestamp="1601127348147" />
+    <state width="1825" height="367" key="GridCell.Tab.1.right" timestamp="1601127348148">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
-    <state width="1825" height="341" key="GridCell.Tab.1.right/67.34.1853.1046@67.34.1853.1046" timestamp="1601087640918" />
+    <state width="1825" height="367" key="GridCell.Tab.1.right/67.34.1853.1046@67.34.1853.1046" timestamp="1601127348148" />
     <state width="926" height="524" key="XDebugger.FullValuePopup" timestamp="1601084019048">
       <screen x="67" y="34" width="1853" height="1046" />
     </state>
@@ -168,11 +184,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/xml_stream/data_types.py</url>
-          <line>32</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/test/test_read_file.py</url>
           <line>123</line>
@@ -192,6 +203,16 @@
           <url>file://$PROJECT_DIR$/test/test_read_string.py</url>
           <line>126</line>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/test/test_read_file.py</url>
+          <line>132</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/xml_stream/data_types.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

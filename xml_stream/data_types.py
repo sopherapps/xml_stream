@@ -46,34 +46,52 @@ class XmlDictElement(dict):
         super().__init__()
         self.update(get_xml_element_attributes_as_dict(xml_element))
 
-        for item in xml_element:
-            item_attributes_dict = get_xml_element_attributes_as_dict(item)
+        unique_root_elements_map, repeated_root_elements = get_unique_and_repeated_sub_elements(xml_element)
 
-            # if the item has sub elements
-            if item:
-                unique_elements_map, repeated_elements = get_unique_and_repeated_sub_elements(item)
+        if len(repeated_root_elements) > 0:
+            unique_tags = set()
 
-                if len(repeated_elements) == 0:
-                    value = XmlDictElement(item)
+            for repeated_element in repeated_root_elements:
+                # in order not to lose the text
+                if repeated_element.text:
+                    repeated_element.set('_value', repeated_element.text)
+
+                for _, unique_element in unique_root_elements_map.items():
+                    repeated_element.append(copy.deepcopy(unique_element))
+
+                unique_tags = set([element.tag for element in repeated_root_elements])
+
+            self.update(
+                {tag: XmlListElement(filter(lambda x: x.tag == tag, repeated_root_elements)) for tag in
+                 unique_tags})
+        else:
+            for item in xml_element:
+                item_attributes_dict = get_xml_element_attributes_as_dict(item)
+
+                # if the item has sub elements
+                if item:
+                    unique_elements_map, repeated_elements = get_unique_and_repeated_sub_elements(item)
+
+                    if len(repeated_elements) == 0:
+                        value = XmlDictElement(item)
+                    else:
+                        unique_tags = set([sub_element.tag for sub_element in repeated_elements])
+                        value = {
+                            tag: XmlListElement(filter((lambda x: x.tag == tag), repeated_elements))
+                            for tag in unique_tags
+                        }
+
+                    value.update(item_attributes_dict)
+
+                    # if item has attributes but no sub elements
+                elif len(item_attributes_dict) > 0:
+                    if item.text:
+                        item_attributes_dict['_value'] = item.text
+
+                    value = item_attributes_dict
+
+                # if item has no attributes and no sub elements
                 else:
-                    unique_tags = set([sub_element.tag for sub_element in repeated_elements])
-                    value = {
-                        tag: XmlListElement(filter((lambda x: x.tag == tag), repeated_elements))
-                        for tag in unique_tags
-                    }
+                    value = item.text
 
-                value.update(item_attributes_dict)
-
-            # if item has attributes but n sub elements
-            elif len(item_attributes_dict) > 0:
-                if item.text:
-                    item_attributes_dict['_value'] = item.text
-
-                value = item_attributes_dict
-
-            # if item has no attributes and no sub elements
-            else:
-                value = item.text
-
-            self.update({item.tag: value})
-
+                self.update({item.tag: value})
