@@ -114,8 +114,8 @@ of the data as `xml.etree.ElementTree.Element` object by default, or as dicts wh
 
 ## Acknowledgements
 
-This [Stack Overflow Answer](https://stackoverflow.com/questions/2148119/how-to-convert-an-xml-string-to-a-dictionary#answer-5807028) was very helpful.
-This [Real Python tutorial on publishing packages](https://realpython.com/pypi-publish-python-package/) was very helpful
+- This [Stack Overflow Answer](https://stackoverflow.com/questions/2148119/how-to-convert-an-xml-string-to-a-dictionary#answer-5807028) about converting XML to dict was very helpful.
+- This [Real Python tutorial on publishing packages](https://realpython.com/pypi-publish-python-package/) was very helpful
 
 ## License
 
