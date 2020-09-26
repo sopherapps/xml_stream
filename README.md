@@ -3,6 +3,8 @@
 A simple XML file and string reader that is able to read big XML files and strings by using streams (iterators),
 with an option to convert to dictionaries
 
+__This package is still under heavy development and is yet to be published__
+
 ## Description
 
 `xml_stream` comprises two helper functions:
