@@ -69,6 +69,84 @@ of the data as `xml.etree.ElementTree.Element` object by default, or as dicts wh
       # returns the element as dictionary
       # ...do something with the element dictionary
       print(element_as_dict)
+      # will print
+      """
+      {
+            'operations_department': {
+                'employees': [
+                    [
+                        {
+                            'team': 'Marketing',
+                            'location': {
+                                'name': 'head office',
+                                'address': 'Kampala, Uganda'
+                            },
+                            'first_name': 'John',
+                            'last_name': 'Doe',
+                            '_value': 'John Doe'
+
+                        },
+                        {
+                            'team': 'Marketing',
+                            'location': {
+                                'name': 'head office',
+                                'address': 'Kampala, Uganda'
+                            },
+                            'first_name': 'Jane',
+                            'last_name': 'Doe',
+                            '_value': 'Jane Doe'
+
+                        },
+                        {
+                            'team': 'Marketing',
+                            'location': {
+                                'name': 'head office',
+                                'address': 'Kampala, Uganda'
+                            },
+                            'first_name': 'Peter',
+                            'last_name': 'Doe',
+                            '_value': 'Peter Doe'
+
+                        }, ],
+                    [
+                        {
+                            'team': 'Customer Service',
+                            'location': {
+                                'name': 'Kampala branch',
+                                'address': 'Kampala, Uganda'
+                            },
+                            'first_name': 'Mary',
+                            'last_name': 'Doe',
+                            '_value': 'Mary Doe'
+
+                        },
+                        {
+                            'team': 'Customer Service',
+                            'location': {
+                                'name': 'Kampala branch',
+                                'address': 'Kampala, Uganda'
+                            },
+                            'first_name': 'Harry',
+                            'last_name': 'Doe',
+                            '_value': 'Harry Doe'
+
+                        },
+                        {
+                            'team': 'Customer Service',
+                            'location': {
+                                'name': 'Kampala branch',
+                                'address': 'Kampala, Uganda'
+                            },
+                            'first_name': 'Paul',
+                            'last_name': 'Doe',
+                            '_value': 'Paul Doe'
+
+                        }
+                    ],
+                ]
+            }
+      }
+      """
   
   # For XML files (even really large ones), use read_xml_file which also returns an iterator  
   for element in read_xml_file(file_path, records_tag='staff'):
@@ -80,6 +158,7 @@ of the data as `xml.etree.ElementTree.Element` object by default, or as dicts wh
       # returns the element as dictionary
       # ...do something with the element dictionary
       print(element_as_dict)
+      # see the print output for read_xml_string
   ```
 
 ## How to test
