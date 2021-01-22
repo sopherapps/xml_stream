@@ -3,7 +3,7 @@ from typing import Optional, Union, Iterator
 from xml.etree import cElementTree as ElementTree
 from xml.etree.cElementTree import Element
 
-__version__ = "0.0.5"
+__version__ = "0.0.6"
 
 from .data_types import XmlDictElement, XmlListElement
 
