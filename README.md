@@ -65,6 +65,8 @@ of the data as `xml.etree.ElementTree.Element` object by default, or as dicts wh
       # ...do something with the element
       print(element)
   
+  # Note that if a tag is namespaced with say _prefix:tag_ and domain is _xmlns:prefix="https://example",
+  # the records_tag from that tag will be '{https://example}tag'
   for element_as_dict in read_xml_string(xml_string, records_tag='staff', to_dict=True):
       # returns the element as dictionary
       # ...do something with the element dictionary
