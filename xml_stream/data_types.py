@@ -1,5 +1,5 @@
 """Module containing the data types needed for the module to work"""
-from typing import Iterable, List, Dict
+from typing import Iterable, List, Dict, Union, Any
 from xml.etree.ElementTree import Element
 
 from ._utils import get_unique_and_repeated_sub_elements, \
@@ -12,6 +12,14 @@ def group_elements_by_tag(elements: List[Element]) -> Dict[str, List[Element]]:
     return {
         tag: XmlListElement(filter((lambda x: x.tag == tag), elements))
         for tag in unique_tags
+    }
+
+
+def _convert_to_dict_or_str(elements_map: Dict[str, Element]) -> Dict[str, Union[str, Dict[Any, Any]]]:
+    """Combines a dictionary of xml elements into a dictionary of dicts or str"""
+    return {
+        key: XmlDictElement(value) if value or value.items() else value.text
+        for key, value in elements_map.items()
     }
 
 
@@ -68,7 +76,8 @@ class XmlDictElement(dict):
                     if len(repeated_elements) == 0:
                         value = XmlDictElement(item)
                     else:
-                        value = group_elements_by_tag(elements=repeated_elements)
+                        unique_elements_dict = _convert_to_dict_or_str(unique_elements_map)
+                        value = {**unique_elements_dict, **group_elements_by_tag(elements=repeated_elements)}
 
                     value.update(item_attributes_dict)
 

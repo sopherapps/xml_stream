@@ -19,17 +19,17 @@ def read_xml_file(file_path: str, records_tag: Optional[str], to_dict: Optional[
     with open(file_path, 'rb') as xml_file:
         context = ElementTree.iterparse(xml_file, events=('start', 'end',))
         context = iter(context)
-        event, root = context.__next__()
-
-        if records_tag is None:
-            yield _convert_xml_element_to_dict(root) if to_dict else root
-            return
+        root = None
 
         for event, element in context:
+            if root is None:
+                root = element
+
             if event == 'end' and element.tag == records_tag:
                 yield _convert_xml_element_to_dict(element) if to_dict else element
                 # clear the root element to leave it empty and use less memory
-                root.clear()
+                if root != element:
+                    root.clear()
 
 
 def read_xml_string(xml_string: str, records_tag: Optional[str], to_dict: Optional[bool] = False,
@@ -39,6 +39,5 @@ def read_xml_string(xml_string: str, records_tag: Optional[str], to_dict: Option
     ElementTree.XML(xml_string, parser=parser)
 
     for event, element in parser.read_events():
-        # FIXME: Deal with occasion when records_tag is None, it should return the root
         if event == 'end' and element.tag == records_tag:
             yield _convert_xml_element_to_dict(element) if to_dict else element
