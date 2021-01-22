@@ -13,7 +13,7 @@ def _convert_xml_element_to_dict(xml_element: Element) -> XmlDictElement:
     return XmlDictElement(xml_element)
 
 
-def read_xml_file(file_path: str, records_tag: str, to_dict: Optional[bool] = False,
+def read_xml_file(file_path: str, records_tag: Optional[str], to_dict: Optional[bool] = False,
                   **kwargs) -> Union[Iterator[Element], Iterator[XmlDictElement]]:
     """Reads an XML file element by element and returns an iterator of either dicts or XML elements"""
     with open(file_path, 'rb') as xml_file:
@@ -21,26 +21,24 @@ def read_xml_file(file_path: str, records_tag: str, to_dict: Optional[bool] = Fa
         context = iter(context)
         event, root = context.__next__()
 
-        for event, element in context:
+        if records_tag is None:
+            yield _convert_xml_element_to_dict(root) if to_dict else root
+            return
 
+        for event, element in context:
             if event == 'end' and element.tag == records_tag:
-                if to_dict:
-                    yield _convert_xml_element_to_dict(element)
-                else:
-                    yield element
+                yield _convert_xml_element_to_dict(element) if to_dict else element
                 # clear the root element to leave it empty and use less memory
                 root.clear()
 
 
-def read_xml_string(xml_string: str, records_tag: str, to_dict: Optional[bool] = False,
+def read_xml_string(xml_string: str, records_tag: Optional[str], to_dict: Optional[bool] = False,
                     **kwargs) -> Union[Iterator[Element], Iterator[XmlDictElement]]:
     """Reads an XML string element by element and returns an iterator of either dicts or XML elements"""
     parser = ElementTree.XMLPullParser(events=('start', 'end',))
     ElementTree.XML(xml_string, parser=parser)
 
     for event, element in parser.read_events():
+        # FIXME: Deal with occasion when records_tag is None, it should return the root
         if event == 'end' and element.tag == records_tag:
-            if to_dict:
-                yield _convert_xml_element_to_dict(element)
-            else:
-                yield element
+            yield _convert_xml_element_to_dict(element) if to_dict else element
