@@ -16,6 +16,11 @@ jobs:
         with:
           python-version: "3.6"
 
+      - name: Check Python version
+        run: |
+          python --version
+          python3 --version
+
   test:
     needs: setup
     runs-on: ubuntu-18.04
