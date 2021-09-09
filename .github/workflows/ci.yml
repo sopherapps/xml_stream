@@ -27,7 +27,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: download huge file
-        run: cd $GITHUB_WORKSPACE && cd test && wget http://aiweb.cs.washington.edu/research/projects/xmltk/xmldata/data/SwissProt/SwissProt.xml && mv SwissProt.xml huge_mock.xml
+        run: cd $GITHUB_WORKSPACE && wget http://aiweb.cs.washington.edu/research/projects/xmltk/xmldata/data/SwissProt/SwissProt.xml && mv SwissProt.xml test/huge_mock.xml
 
       - name: Run tests
         run: cd $GITHUB_WORKSPACE && python -m unittest

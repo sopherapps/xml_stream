@@ -185,6 +185,10 @@ of the data as `xml.etree.ElementTree.Element` object by default, or as dicts wh
   
 - Download a huge xml file for test purposes and save it in the `/test` folder as `huge_mock.xml`
 
+  ```sh
+  wget http://aiweb.cs.washington.edu/research/projects/xmltk/xmldata/data/SwissProt/SwissProt.xml && mv SwissProt.xml test/huge_mock.xml
+  ```
+
 - Run the test command
 
   ```bash
