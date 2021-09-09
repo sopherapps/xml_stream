@@ -139,3 +139,5 @@ cython_debug/
 
 # test mock file
 huge_mock.xml
+
+.idea/
