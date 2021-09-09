@@ -27,13 +27,21 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: cd $GITHUB_WORKSPACE && pip install -r requirements.txt
+        run: |
+          python -m pip install --upgrade pip
+          python --version
+          pip install -r requirements.txt
 
       - name: download huge file
-        run: cd $GITHUB_WORKSPACE && cd test && wget http://aiweb.cs.washington.edu/research/projects/xmltk/xmldata/data/SwissProt/SwissProt.xml && mv SwissProt.xml huge_mock.xml
+        run: |
+          cd $GITHUB_WORKSPACE
+          wget http://aiweb.cs.washington.edu/research/projects/xmltk/xmldata/data/SwissProt/SwissProt.xml
+          mv SwissProt.xml test/huge_mock.xml
 
       - name: Run tests
-        run: cd $GITHUB_WORKSPACE && python -m unittest
+        run: |
+          cd $GITHUB_WORKSPACE
+          python -m unittest
 
   build:
     needs: test
@@ -43,10 +51,16 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: cd $GITHUB_WORKSPACE && pip install -r requirements.txt
+        run: |
+          cd $GITHUB_WORKSPACE
+          python -m pip install --upgrade pip
+          python --version
+          pip install -r requirements.txt
 
       - name: Build
-        run: python setup.py sdist bdist_wheel
+        run: |
+          python setup.py sdist bdist_wheel
 
       - name: Upload to pypi
-        run: twine upload -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }} dist/*
+        run: |
+          twine upload -u ${{ secrets.PYPI_USERNAME }} -p ${{ secrets.PYPI_PASSWORD }} dist/*
