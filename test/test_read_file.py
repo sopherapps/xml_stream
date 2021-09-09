@@ -98,13 +98,13 @@ class TestReadXmlString(TestCase):
     def test_read_huge_xml_file_to_dict(self):
         """Can read a very big xml file easily to return iterator of dicts when to_dict is set to True"""
         if os.path.isfile(self.huge_mock_file_path):
-            for element in read_xml_file(self.small_mock_file_path, records_tag='staff', to_dict=True):
+            for element in read_xml_file(self.small_mock_file_path, records_tag='Entry', to_dict=True):
                 self.assertIsInstance(element, dict)
 
     def test_read_huge_xml_file_to_xml_element(self):
         """Can read a very big xml file easily to return iterator of xml.etree.ElementTree.Element by default"""
         if os.path.isfile(self.huge_mock_file_path):
-            for element in read_xml_file(self.small_mock_file_path, records_tag='staff'):
+            for element in read_xml_file(self.small_mock_file_path, records_tag='Entry'):
                 self.assertIsInstance(element, Element)
 
     def test_read_xml_file_to_dict_for_staff(self):

@@ -1,0 +1,41 @@
+on:
+  pull_request:
+    paths:
+      - "**.py"
+      - "**.xml"
+      - "requirements.txt"
+      - "deployment.yml"
+      - ".gitignore"
+      - ".github/workflows/**"
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        python-version: [3.6, 3.7, 3.8, 3.9]
+
+    steps:
+      - name: Checkout the commit
+        uses: actions/checkout@v2
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python --version
+          pip install -r requirements.txt
+
+      - name: download huge file
+        run: |
+          cd $GITHUB_WORKSPACE
+          wget http://aiweb.cs.washington.edu/research/projects/xmltk/xmldata/data/SwissProt/SwissProt.xml
+          mv SwissProt.xml test/huge_mock.xml
+
+      - name: Run tests
+        run: |
+          cd $GITHUB_WORKSPACE
+          python -m unittest
