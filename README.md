@@ -1,5 +1,7 @@
 # xml_stream
 
+[![PyPI version](https://badge.fury.io/py/xml-stream.svg)](https://badge.fury.io/py/xml-stream) ![CI](https://github.com/sopherapps/xml_stream/actions/workflows/ci.yml/badge.svg) ![CD](https://github.com/sopherapps/xml_stream/actions/workflows/cd.yml/badge.svg)
+
 A simple XML file and string reader that is able to read big XML files and strings by using streams (iterators),
 with an option to convert to dictionaries
 
@@ -203,3 +205,9 @@ of the data as `xml.etree.ElementTree.Element` object by default, or as dicts wh
 ## License
 
 Copyright (c) 2020 [Martin Ahindura](https://github.com/Tinitto) Licensed under the [MIT License](./LICENSE)
+
+## Gratitude
+
+All glory be to God
+
+<a href="https://www.buymeacoffee.com/martinahinJ" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
